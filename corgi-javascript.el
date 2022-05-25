@@ -24,6 +24,7 @@
         js2-highlight-level 3
         js2-global-externs '("describe" "it" "before"
                              "after" "beforeEach" "afterEach"))
+  :commands (js2-mode)
   :hook ((js2-mode . js2-imenu-extras-mode))
   :config
   (js2-imenu-extras-setup)
