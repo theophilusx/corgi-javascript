@@ -54,10 +54,10 @@
   :diminish t
   :hook ((js2-mode . prettier-js-mode)))
 
-(use-package json-reformat
-  :commands (json-reformat))
+;;(use-package json-reformat
+;;  :commands (json-reformat))
 
-(use-package json-mode)
+;;(use-package json-mode)
 
 (use-package tide
   :commands (tide-setup)
