@@ -1,7 +1,7 @@
 ;;; corgi-javascript.el -- javascript support for corgi-emacs -*- lexical-binding: t -*-
 ;;
 ;; Filename: corgi-javascript.el
-;; Package-Requires ((js2-mode) (xref-js2) (js2-refactor) (add-node-modules-path) (prettier-js) (json-mode) (tide))
+;; Package-Requires ((js2-mode) (xref-js2) (js2-refactor) (add-node-modules-path) (prettier-js) (tide) (js-comint))
 ;;
 ;;; Commentary
 ;;
@@ -9,8 +9,8 @@
 ;;
 ;;; Code
 
+(require 'straight)
 (require 'use-package)
-(require 'diminish)
 
 (use-package js2-mode
   :diminish t
