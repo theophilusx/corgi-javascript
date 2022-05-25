@@ -9,7 +9,11 @@
 ;;
 ;;; Code
 
+(require 'use-package)
+(require 'diminish)
+
 (use-package js2-mode
+  :diminish t
   :mode "\\.js\\'"
   :interpreter ("node" . js2-mode)
   :init
@@ -26,6 +30,7 @@
   (define-key js2-mode-map (kbd "M-.") nil))
 
 (use-package xref-js2
+  :diminish t
   :commands (xref-js2-xref-backend)
   :hook ((js2-mode . (lambda ()
                        (add-hook 'xref-backend-functions #'xref-js2-xref-backend)))))
@@ -40,6 +45,7 @@
   :hook ((js2-mode . #'add-node-modules-path)))
 
 (use-package prettier-js
+  :diminish t
   :init
   (setq prettier-js-args '("--print-width" "80"
                            "--tab-width" "2")
@@ -58,6 +64,9 @@
   :hook ((typescript-mode . (lambda ()
                               (tide-setup)
                               (tide-hl-identifier-mode +1)))))
+
+(use-package js-comint
+  :commands (js-comint-start-or-switch-to-repl))
 
 (provide 'corgi-javascript)
 ;; corgi-javascript.el ends here
