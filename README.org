@@ -1,0 +1,5 @@
+* corgi-javascript 
+
+Basic support for working with javascript code within corgi-emacs. 
+
+This is a work in progress!
