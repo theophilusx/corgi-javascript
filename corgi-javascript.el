@@ -10,7 +10,6 @@
 ;;; Code
 
 (require 'straight)
-(require 'use-package)
 
 (use-package js2-mode
   :diminish t
@@ -55,11 +54,6 @@
   :diminish t
   :hook ((js2-mode . prettier-js-mode)))
 
-;;(use-package json-reformat
-;;  :commands (json-reformat))
-
-;;(use-package json-mode)
-
 (use-package tide
   :commands (tide-setup)
   :hook ((typescript-mode . (lambda ()
@@ -68,6 +62,9 @@
 
 (use-package js-comint
   :commands (js-comint-start-or-switch-to-repl))
+
+(defun corgi-javascript/load-default-bindings ()
+  (setq *signal-files-list* (cons 'corgi-javascript-signals *signal-files-list*)))
 
 (provide 'corgi-javascript)
 ;; corgi-javascript.el ends here
