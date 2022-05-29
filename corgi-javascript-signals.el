@@ -1,3 +1,5 @@
+;;; -*- no-byte-compile: t -*-
+
 ((js-mode ( :eval/last-sexp js-send-last-sexp
             :eval/buffer js-send-buffer
             :eval/region js-send-region

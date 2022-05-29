@@ -38,21 +38,24 @@
 (use-package js2-refactor
   :diminish t
   :commands (js2-refactor-mode)
-  :hook (js2-mode . js2-refactor-mode))
+  :hook (js2-mode . js2-refactor-mode)
+  :config
+  (diminish 'js2-refactgor-mode))
 
 (use-package add-node-modules-path
   :commands (add-node-modules-path)
   :hook ((js2-mode . #'add-node-modules-path)))
 
 (use-package prettier-js
-  :diminish t
   :init
   (setq prettier-js-args '("--print-width" "80"
                            "--tab-width" "2")
         prettier-js-width-mode 'fill)
   :commands (prettier-js-mode)
   :diminish t
-  :hook ((js2-mode . prettier-js-mode)))
+  :hook ((js2-mode . prettier-js-mode))
+  :config
+  (diminish 'prettier-js-mode))
 
 (use-package tide
   :commands (tide-setup)
@@ -66,10 +69,6 @@
 (defun corgi-javascript/load-default-bindings ()
   (setq *signal-files-list* (cons 'corgi-javascript-signals *signal-files-list*)
         *key-files-list* (cons 'corgi-javascript-keys *key-files-list*)))
-
-(diminish 'js2-refactor-mode)
-(diminish 'prettier-js-mode)
-(diminish 'projectile-mode)
 
 (provide 'corgi-javascript)
 ;; corgi-javascript.el ends here
