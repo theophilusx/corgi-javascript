@@ -64,7 +64,12 @@
   :commands (js-comint-start-or-switch-to-repl))
 
 (defun corgi-javascript/load-default-bindings ()
-  (setq *signal-files-list* (cons 'corgi-javascript-signals *signal-files-list*)))
+  (setq *signal-files-list* (cons 'corgi-javascript-signals *signal-files-list*)
+        *key-files-list* (cons 'corgi-javascript-keys *key-files-list*)))
+
+(diminish 'js2-refactor-mode)
+(diminish 'prettier-js-mode)
+(diminish 'projectile-mode)
 
 (provide 'corgi-javascript)
 ;; corgi-javascript.el ends here
