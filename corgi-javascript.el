@@ -33,7 +33,7 @@
               (add-hook 'xref-backend-functions #'xref-js2-xref-backend)))
 
 (straight-use-package 'js2-refactor)
-(require 'js2-refactgor)
+(require 'js2-refactor)
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
 (diminish 'js2-refactor-mode)
 
