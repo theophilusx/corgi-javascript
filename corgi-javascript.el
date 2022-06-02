@@ -22,10 +22,11 @@
       js2-highlight-level 3
       js2-global-externs '("describe" "it" "before"
                            "after" "beforeEach" "afterEach"))
+
 (require 'js2-mode)
 (js2-imenu-extras-setup)
 (define-key js2-mode-map (kbd "M-.") nil)
-(add-hook 'js-mode-hook #'js2-minor-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (straight-use-package 'xref-js2)
 (require 'xref-js2)
