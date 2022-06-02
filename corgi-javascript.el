@@ -66,9 +66,9 @@
 (use-package js-comint
   :commands (js-comint-start-or-switch-to-repl))
 
-(defun corgi-javascript/load-default-bindings ()
-  (setq *signal-files-list* (cons 'corgi-javascript-signals *signal-files-list*)
-        *key-files-list* (cons 'corgi-javascript-keys *key-files-list*)))
+(defun corgi-javascript/add-default-bindings ()
+  (add-to-list '*signal-files-list* 'corgi-javascript-signals t)
+  (add-to-list '*key-files-list* 'corgi-javascript-keys t))
 
 (provide 'corgi-javascript)
 ;; corgi-javascript.el ends here
