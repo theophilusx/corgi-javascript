@@ -3,18 +3,17 @@
 (bindings
  (normal|visual
   (","
-   ("r"
+   ("r" "Refactor"
     ("a"
      ("a" "Toggle async" :refactor/toggle-async)
      ("p" "Add parameter" :refactor/introduce-parameter)
      ("t" "Add this" :refactor/to-this))
     ("e"
-     ("f" "Extract function" :refactor/extract-function)
      ("l" "Extract let" :refactor/extract-let)
      ("m" "Extract method" :refactor/extract-method)
      ("v" "Extract var" :refactor/extract-var))
     ("f" "Wrap for loop" :refactor/wrap-for)
-    ("l" "Loggin"
+    ("l" "Logging"
      ("l" "Log this" :refactor/log-this)
      ("d" "Debug this" :refactor/debug-this))
     ("r" "Rename var" :refactor/rename-var)
