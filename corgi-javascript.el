@@ -25,6 +25,7 @@
 (require 'js2-mode)
 (js2-imenu-extras-setup)
 (define-key js2-mode-map (kbd "M-.") nil)
+(add-hook 'js-mode-hook #'js2-minor-mode)
 
 (straight-use-package 'xref-js2)
 (require 'xref-js2)
