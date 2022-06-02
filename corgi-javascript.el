@@ -10,6 +10,7 @@
 ;;; Code
 
 (require 'straight)
+(require 'corkey)
 
 (use-package js2-mode
   :diminish t
@@ -68,7 +69,8 @@
 
 (defun corgi-javascript/add-default-bindings ()
   (add-to-list '*signal-files-list* 'corgi-javascript-signals t)
-  (add-to-list '*key-files-list* 'corgi-javascript-keys t))
+  (add-to-list '*key-files-list* 'corgi-javascript-keys t)
+  (corkey/load-and-watch *key-files-list* *signal-files-list*))
 
 (provide 'corgi-javascript)
 ;; corgi-javascript.el ends here
