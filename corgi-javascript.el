@@ -10,62 +10,53 @@
 ;;; Code
 
 (require 'straight)
+(require 'diminish)
 (require 'corkey)
 
-(use-package js2-mode
-  :diminish t
-  :mode "\\.js\\'"
-  :interpreter ("node" . js2-mode)
-  :init
-  (setq-default js2-bounce-indent-p nil)
-  (setq js-indent-level 2
-        js2-include-node-externs t
-        js2-mode-assume-strict t
-        js2-highlight-level 3
-        js2-global-externs '("describe" "it" "before"
-                             "after" "beforeEach" "afterEach"))
-  :commands (js2-mode)
-  :hook ((js2-mode . js2-imenu-extras-mode))
-  :config
-  (js2-imenu-extras-setup)
-  (define-key js2-mode-map (kbd "M-.") nil))
+(straight-use-package 'js2-mode)
 
-(use-package xref-js2
-  :diminish t
-  :commands (xref-js2-xref-backend)
-  :hook ((js2-mode . (lambda ()
-                       (add-hook 'xref-backend-functions #'xref-js2-xref-backend)))))
+(setq-default js2-bounce-indent-p nil)
+(setq js-indent-level 2
+      js2-include-node-externs t
+      js2-mode-assume-strict t
+      js2-highlight-level 3
+      js2-global-externs '("describe" "it" "before"
+                           "after" "beforeEach" "afterEach"))
+(require 'js2-mode)
+(js2-imenu-extras-setup)
+(define-key js2-mode-map (kbd "M-.") nil)
 
-(use-package js2-refactor
-  :diminish t
-  :commands (js2-refactor-mode)
-  :hook (js2-mode . js2-refactor-mode)
-  :config
-  (diminish 'js2-refactgor-mode))
+(straight-use-package 'xref-js2)
+(require 'xref-js2)
+(add-hook 'js2-mode-hook
+          #'(lambda ()
+              (add-hook 'xref-backend-functions #'xref-js2-xref-backend)))
 
-(use-package add-node-modules-path
-  :commands (add-node-modules-path)
-  :hook ((js2-mode . #'add-node-modules-path)))
+(straight-use-package 'js2-refactor)
+(require 'js2-refactgor)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(diminish 'js2-refactor-mode)
 
-(use-package prettier-js
-  :init
-  (setq prettier-js-args '("--print-width" "80"
-                           "--tab-width" "2")
-        prettier-js-width-mode 'fill)
-  :commands (prettier-js-mode)
-  :diminish t
-  :hook ((js2-mode . prettier-js-mode))
-  :config
-  (diminish 'prettier-js-mode))
+(straight-use-package 'add-node-modules-path)
+(require 'add-node-modules-path)
+(add-hook 'js2-mode-hook #'add-node-modules-path)
 
-(use-package tide
-  :commands (tide-setup)
-  :hook ((typescript-mode . (lambda ()
-                              (tide-setup)
-                              (tide-hl-identifier-mode +1)))))
+(straight-use-package 'prettier-js)
+(setq prettier-js-args '("--print-width" "80"
+                         "--tab-width" "2")
+      prettier-js-width-mode 'fill)
+(require 'prettier-js)
+(add-hook 'js2-mode-hook #'prettier-js-mode)
+(diminish 'prettier-js-mode)
 
-(use-package js-comint
-  :commands (js-comint-start-or-switch-to-repl))
+(straight-use-package 'tide)
+(require 'tide)
+(add-hook 'typescript-mode-hook #'(lambda ()
+                                    (tide-setup)
+                                    (tide-hl-identifier-mode +1)))
+
+(straight-use-package 'js-comint)
+(require 'js-comint)
 
 (defun corgi-javascript/add-default-bindings ()
   (add-to-list '*signal-files-list* 'corgi-javascript-signals t)
