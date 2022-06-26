@@ -61,9 +61,9 @@
 (require 'js-comint)
 
 (defun corgi-javascript/add-default-bindings ()
-  (add-to-list '*signal-files-list* 'corgi-javascript-signals t)
-  (add-to-list '*key-files-list* 'corgi-javascript-keys t)
-  (corkey/load-and-watch *key-files-list* *signal-files-list*))
+  (add-to-list 'corkey-signal-files-list 'corgi-javascript-signals t)
+  (add-to-list 'corkey-key-files-list 'corgi-javascript-keys t)
+  (corkey/load-and-watch corkey-key-files-list corkey-signal-files-list))
 
 (provide 'corgi-javascript)
 ;; corgi-javascript.el ends here
